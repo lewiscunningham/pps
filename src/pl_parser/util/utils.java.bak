@@ -1,0 +1,110 @@
+package pl_parser.util;
+
+import java.io.File;
+
+public class utils {
+
+	private static boolean debug = false;
+	private static String filePath;
+	private static String fileName;
+	private static StringBuffer children = new StringBuffer();
+	
+	private utils() {}
+
+	public static void addChildren(String newChild)
+	{
+		children.insert(0, "\n" + newChild);
+	}
+	
+	public static void printChildString() 
+	{
+		printDebug(children.toString());
+	}
+	public static void setDebug( boolean doDebug) 
+	{
+		debug = doDebug;
+	}
+	
+	public static boolean isDebug() 
+	{
+	  return debug;	
+	}
+	
+	public static void printDebug(String msg)
+	{
+		if (debug) {
+			System.out.println(msg);
+		}
+	}
+	public static void printInfo(String msg)
+	{
+		System.out.println(msg);
+	}
+	
+	public static void printInfo(char msg)
+	{
+		System.out.println(msg);
+	}
+	
+	public static void printIf(String msg, boolean test)
+	{
+		if (test)
+		{
+			System.out.println(msg);
+		}
+	}
+	
+	public static void printException(String msg)
+	{
+		System.out.println(msg);
+	}
+	
+	public static void setFileName(String fP)
+	{
+		filePath = fP;
+		File userFile = new File(fP);
+		fileName = userFile.getName();
+		fileName = fileName.substring(0, fileName.lastIndexOf("."));
+	}
+	
+	public static String getFileName()
+	{
+		return fileName;
+	}
+	public static String getFilePath()
+	{
+		return filePath;
+	}
+	
+	public static String padRight(String s, int n, char p) {
+		
+		StringBuffer pad = new StringBuffer();
+
+		pad.append(s);
+
+		for ( int i = 0; i < n ; i++) {  
+		     pad.append(p);
+		}
+		 
+		
+		String retval = pad.toString();
+		
+		return retval;
+	}
+
+	public static String padLeft(String s, int n, char p) {
+
+		StringBuffer pad = new StringBuffer();
+		for ( int i = 0; i < n ; i++) {  
+		     pad.append(p);
+		}
+		 
+		pad.append(s);
+		
+		String retval = pad.toString();
+		
+		return retval;  
+	}
+	
+}
+
